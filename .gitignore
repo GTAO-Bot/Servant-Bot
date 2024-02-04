@@ -1,3 +1,9 @@
+# Project Files
+API.py
+.vscode
+__pycache__
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
