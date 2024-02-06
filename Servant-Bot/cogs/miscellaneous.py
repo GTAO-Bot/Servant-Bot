@@ -73,7 +73,7 @@ class mischallenousCog(commands.Cog):
         await ctx.channel.edit(archived=True)
 
     @commands.command(help=" -> Get Bot Ping")
-    async def ping(ctx, *, code=None):
+    async def ping(self, ctx):
         x = await ctx.send("Pong in <a:loading:1184992104108281977>")
         await asyncio.sleep(1)
         await x.edit(f'Pong! In {round(self.bot.latency * 1000)}ms')
