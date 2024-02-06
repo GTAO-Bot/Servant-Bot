@@ -7,6 +7,8 @@ import contextlib
 from traceback import format_exception
 import time
 
+from API import bot_token
+
 class evalCommand(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -58,7 +60,7 @@ class evalCommand(commands.Cog):
 Time Taken to execute Code: {total_time+0.1} s
 Errors Found: {errors_found}
 '''
-        if self.bot_token in content:
+        if bot_token in content:
             await ctx.send('Error, Access Denied')
             return
 
