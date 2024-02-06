@@ -5,7 +5,7 @@ from aioconsole import aexec
 import io
 import contextlib
 from traceback import format_exception
-
+import time
 
 class evalCommand(commands.Cog):
     def __init__(self, bot):
