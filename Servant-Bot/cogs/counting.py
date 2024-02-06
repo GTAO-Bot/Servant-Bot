@@ -46,7 +46,7 @@ class countingCog(commands.Cog):
                 tries+=1
                 channel = await self.bot.fetch_channel(self.supportServer['webhookChannelID'])
                 async for msg in channel.history(limit=50):
-                    if msg.author.id in [self.supportServer['webhookID'], API.devUsers[0]]:
+                    if msg.author.id in [self.supportServer['webhookID'], API.devUsers[0]] and 'Count: ' in msg.content:
                         break
                 if 'Count: ' in msg.content:
                     count = msg.content[7:]
@@ -55,7 +55,9 @@ class countingCog(commands.Cog):
                     break
                 await asyncio.sleep(30)
 
-                if tries == 10: return
+                if tries == 10: 
+                    await channel.send('Couldn`t restart counting :sob:')
+                    return
 
             self.webhookSender.start()
             self.loopsStarted = True
