@@ -10,11 +10,10 @@ class mischallenousCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    async def bot_check(self, ctx):
-        return ctx.author.id in devUsers
-
     @commands.command(help=" -> Get information about a specific user",  hidden=True)
     async def info(self, ctx, userid=None,):
+        if ctx.author.id not in devUsers:
+            return
         if userid == None or userid == ctx.author.id:
             await ctx.reply("Why are you researching yourself? :face_with_raised_eyebrow:")
             userid = ctx.author.id

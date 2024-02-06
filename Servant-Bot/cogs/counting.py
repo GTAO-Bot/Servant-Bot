@@ -5,6 +5,8 @@ from nextcord.ext import tasks
 import asyncio
 from requests import get, post
 
+import API
+
 class countingCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
