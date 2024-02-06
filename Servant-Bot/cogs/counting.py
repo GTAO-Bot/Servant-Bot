@@ -10,7 +10,6 @@ import API
 class countingCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.loopsStarted = False
         self.supportServer = {
             'webhook': API.supportServerWebhook,
             'number': None,
@@ -40,7 +39,7 @@ class countingCog(commands.Cog):
     @commands.Cog.listener(name='on_ready')
     async def loops_starter(self):
         self.supportServer['webhookChannelID'] = int(get(self.supportServer['webhook']).json()['channel_id'])
-        self.supportServer['webhookID'] = int(get(self.supportServer['webhook']).json()['user']['id'])
+        self.supportServer['webhookID'] = int(get(self.supportServer['webhook']).json()['id'])
         if not self.webhookSender.is_running():
             tries = 0
             while True:
@@ -64,7 +63,6 @@ class countingCog(commands.Cog):
                 await asyncio.sleep(30)
 
             self.webhookSender.start()
-            self.loopsStarted = True
 
 
     @tasks.loop(seconds=3)
