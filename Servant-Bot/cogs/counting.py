@@ -26,7 +26,7 @@ class countingCog(commands.Cog):
             self.webhookSender.stop()
             await msg.reply('Stopped Counting')
         elif c == 'start counting':
-            if self.webhookSender.is_running:
+            if self.webhookSender.is_running():
                 await msg.reply('Already running')
             else:
                 self.webhookSender.start()
@@ -38,8 +38,8 @@ class countingCog(commands.Cog):
 
     @commands.Cog.listener(name='on_ready')
     async def loops_starter(self):
-        self.supportServer['webhookChannelID'] = get(self.supportServer['webhook']).json()['channel_id']
-        self.supportServer['webhookID'] = get(self.supportServer['webhook']).json()['user']['id']
+        self.supportServer['webhookChannelID'] = int(get(self.supportServer['webhook']).json()['channel_id'])
+        self.supportServer['webhookID'] = int(get(self.supportServer['webhook']).json()['user']['id'])
         if not self.loopsStarted:
             tries = 0
             while True:
