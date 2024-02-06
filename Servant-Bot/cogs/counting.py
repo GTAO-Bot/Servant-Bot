@@ -52,12 +52,15 @@ class countingCog(commands.Cog):
                     count = msg.content[7:]
                     count = count.replace(',', '')
                     self.supportServer['number'] = int(count)+1
+                    print(count)
+                    print(self.supportServer['number'])
                     break
-                await asyncio.sleep(30)
 
                 if tries == 10: 
                     await channel.send('Couldn`t restart counting :sob:')
                     return
+
+                await asyncio.sleep(30)
 
             self.webhookSender.start()
             self.loopsStarted = True
