@@ -59,7 +59,7 @@ class mischallenousCog(commands.Cog):
     @commands.Cog.listener()
     async def on_thread_create(self, thread):
         if isinstance(thread.parent, nextcord.ForumChannel):
-            if thread.parent_id in [1192066530263961631, 1195348626944295032]:
+            if thread.parent_id in [1219399081412268102, 1195348626944295032]:
                 await thread.send(f'Thread auto add: <@&1128392572788813907>')
 
     @commands.command(help=" -> Purge x last messages",  hidden=True)
